@@ -1,0 +1,22 @@
+#!/bin/python
+
+import os
+HOME = os.getenv("HOME")
+
+version = input("ProtonGE version to install (e.g. \"9-27\"): ")
+
+flatpak = input("Install for native or flatpak?\n   1) Native  2) Flatpak\nEnter a number(default=1): ")
+
+if flatpak == "1" or flatpak == "":
+    wd = f"{HOME}/.steam/steam/compatibilitytools.d/"
+elif flatpak == "2":
+    wd = f"{HOME}/.var/app/com.valvesoftware.Steam/data/Steam/compatibilitytools.d/"
+#wd = f"{HOME}/testdir/"
+
+os.system(f"mkdir -p {wd}")
+os.chdir(wd)
+os.system(f"wget https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton{version}/GE-Proton{version}.tar.gz")
+os.system(f"tar xzvf GE-Proton{version}.tar.gz")
+os.system(f"rm -v GE-Proton{version}.tar.gz")
+
+print("\nPackage installation process completed.")
