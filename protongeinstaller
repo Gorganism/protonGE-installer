@@ -5,6 +5,10 @@ HOME = os.getenv("HOME")
 
 version = input("ProtonGE version to install (e.g. \"9-27\"): ")
 
+# versions after 11-4 require -x86_64
+if not (version.contains("x86_64") or version.contains("aarch64"):
+    print("Mind that the naming convention for ProtonGE has changed after 11-3, and the version must include the architecture (e.g. 11-4-x86_64)
+
 flatpak = input("Install for native or flatpak?\n   1) Native  2) Flatpak\nEnter a number(default=1): ")
 
 if flatpak == "1" or flatpak == "":
