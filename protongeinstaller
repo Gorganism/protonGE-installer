@@ -19,7 +19,12 @@ elif flatpak == "2":
 
 os.system(f"mkdir -p {wd}")
 os.chdir(wd)
-os.system(f"wget https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton{version}/GE-Proton{version}.tar.gz")
+if ("x86_64" in version) or ("aarch64" in version):
+    vtrunc = version.replace("-x86_64","")
+    vtrunc = vtrunc.replace("-aarch64","")
+    os.system(f"wget https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton{vtrunc}/GE-Proton{version}.tar.gz")
+else:
+    os.system(f"wget https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton{version}/GE-Proton{version}.tar.gz")
 os.system(f"tar xzvf GE-Proton{version}.tar.gz")
 os.system(f"rm -v GE-Proton{version}.tar.gz")
 
